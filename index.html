@@ -146,7 +146,7 @@
         }
 
         //Validar los nombres
-        if (nombre=="" || apellido=="") {
+        if (nombre == "" || apellido == "") {
           msg = "Debe ingresar los nombres del usuario";
           ret = false;
         }
@@ -155,6 +155,11 @@
         if (fecha_nac === "") {
           msg = "Debe ingresar una fecha de nacimiento válida";
           ret = false;
+        } else {
+          if (calcularEdad(fecha_nac) < 15) {
+            msg = "Debes tener más de 15 años para poder registrarte.";
+            ret = false;
+          }
         }
 
         if (!ret) {
@@ -221,7 +226,7 @@
 
         //Insertamos los datos en el array
         datos.push(newUser);
-        console.log(datos);
+        // console.log(datos);
 
         //Insertamos los datos en la tabla HTML
         insertarDatos(newUser);
@@ -251,7 +256,7 @@
           });
         });
 
-        console.log(datos);
+        // console.log(datos);
       };
 
       const btnAdd = document.getElementById("btnAdd");
